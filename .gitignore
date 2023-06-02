@@ -1,0 +1,11 @@
+# Ignore the virtual environment
+venv/
+
+# Also ignore the __pycache__
+__pycache__/
+
+# Hide the .env file because that is where we keep our secrets, keys, etc.
+.env
+
+# Ignore the SQLite Database (for development/testing only)
+app.db

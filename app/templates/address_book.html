@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Address Book {% endblock %}
+
+{% block header %}
+    <h2>Enter the Address of Your Stalkee Below! </h2>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="card-body">
+                <form action="" method="post">
+                    {{ form.csrf_token }}
+
+                    {{ form.first_name.label }}
+                    {{ form.first_name(class='form-control', placeholder='Enter First Name') }}
+
+                    {{ form.last_name.label }}
+                    {{ form.last_name(class='form-control', placeholder='Enter Last Name') }}
+
+                    {{ form.phone_number.label }}
+                    {{ form.phone_number(class='form-control', placeholder='555-555-5555') }}
+
+                    {{ form.address.label }}
+                    {{ form.address(class='form-control', placeholder='1234 Your Mom Dr, PA 55555') }}
+
+                    {{ form.email.label }}
+                    {{ form.email(class='form-control', placeholder='stalkee@gullible.com') }}
+
+                    {{ form.submit(class='btn btn-outline-info w-100 mt-3') }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
