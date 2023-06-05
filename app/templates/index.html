@@ -3,7 +3,7 @@
 {% block title %} Home {% endblock %}
 
 {% block header %}
-    <h1>You're Arived at Stalkers 'R' Us</h1>
+    <h1>You've Arrived at Stalkers 'R' Us</h1>
     <h5>Never Lose Another Address Again!</h5>
 {% endblock %}
 
@@ -11,8 +11,9 @@
     <div class="row">
         <!-- Left 2/3 Column -->
         <div class="col-12 col-lg-8 order-1 order-lg-0">
-            
+
             <!-- Post Display -->
+            {% for address in addresses %}
             <div class="card mt-3 bg-primary-subtle border-danger-subtle">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -20,33 +21,41 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h6 class="card-subtle">May 31, 2023</h6>
-                            <h5 class="card-title">Post Title</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt aliquam necessitatibus aperiam magni vero maiores mollitia incidunt rerum minima iste, eum culpa nostrum. Sunt, soluta quisquam provident labore modi magnam.</p>
+                            <h5 class="card-title">{{ address.ad_last_name }}, {{ address.ad_first_name }}</h5>
+                            <p class="card-text">{{ address.street_address }}, {{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+                            <h5>Contact Them Now!</h5>
+                            <p class="card-text">{{ address.phone_number }} or {{ address.email }}</p>
+                            <h6>Submitted By: {{ address.submitter.username }}</h6>
+                        </div>
+                        <div class="card-footer">
+                            <form class="d-inline" action="{{ url_for('delete_address', address_id=address.id) }}" method="POST">
+                                <button type="submit" class="btn btn-danger btn-sm float-end">Delete</button>
+                            </form>
+                            <a href="{{ url_for('edit_address', id=address.id) }}" class="btn btn-primary btn-sm float-end me-2">Edit</a>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
 
         </div>
 
         <!-- Right 1/3 Column -->
         <div class="col-12 col-lg-4 order-0 order-lg-1">
-            
+
             <!-- Search Bar -->
             <div class="card mt-3 bg-primary-subtle border-danger-subtle">
                 <div class="card-header">Search</div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ url_for('address_book') }}" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter Search Term...">
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <input type="text" class="form-control" name="search_term" placeholder="Enter Search Term...">
+                            <button type="submit" class="btn btn-info">Search</button>
                         </div>
                     </form>
                 </div>
             </div>
 
         </div>
-    </div>    
-
+    </div>
 {% endblock %}

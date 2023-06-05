@@ -22,8 +22,17 @@
                     {{ form.phone_number.label }}
                     {{ form.phone_number(class='form-control', placeholder='555-555-5555') }}
 
-                    {{ form.address.label }}
-                    {{ form.address(class='form-control', placeholder='1234 Your Mom Dr, PA 55555') }}
+                    {{ form.street_address.label }}
+                    {{ form.street_address(class='form-control', placeholder='1234 Your Mom Dr') }}
+
+                    {{ form.city.label }}
+                    {{ form.city(class='form-control', placeholder='Humorville') }}
+
+                    {{ form.state.label }}
+                    {{ form.state(class='form-control', placeholder='PA') }}
+
+                    {{ form.zip_code.label }}
+                    {{ form.zip_code(class='form-control', placeholder='55555') }}
 
                     {{ form.email.label }}
                     {{ form.email(class='form-control', placeholder='stalkee@gullible.com') }}

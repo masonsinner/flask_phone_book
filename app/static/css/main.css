@@ -1,3 +1,14 @@
-h1, h5 {
+h1, h5, p, h6 {
     color: navy;
+}
+
+/* Navbar */
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: navy;
+}
+
+/* Logout Link */
+.navbar-nav .nav-link.logout-link {
+  color: navy;
 }
